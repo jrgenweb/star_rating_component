@@ -1,0 +1,71 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+$bg-color: #e6e9fb;
+$yellow: #facc15;
+$white: #fff;
+html {
+    font-size: 10px;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+body {
+    background-color: $bg-color;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+.rating {
+    background-color: $white;
+    padding: 2rem;
+    font-size: 1rem;
+    width: 500px;
+    border-radius: 1rem;
+    box-shadow: 5px 5px 2px darken($bg-color, $amount: 2%);
+    text-align: center;
+    .rating-header {
+        font-size: 1.8rem;
+    }
+    .rating-footer {
+        p {
+            font-size: 1.6rem;
+        }
+    }
+    .rating-body {
+        .stars {
+            color: $yellow;
+            font-size: 5rem;
+            &:hover {
+                cursor: pointer;
+            }
+            .fa-star,
+            .fa-regular {
+                position: relative;
+                z-index: 5;
+            }
+
+            .fa-star:has(~ .fa-star:hover)::after,
+            .fa-regular:has(~ .fa-regular:hover)::after,
+            .fa-star:hover::after,
+            .fa-regular:hover::after {
+                font-family: "Font Awesome 5 Free";
+                content: "\f005";
+                font-weight: bold;
+                position: absolute;
+                color: $yellow;
+                inset: 0;
+
+                z-index: 100;
+            }
+
+            .fa-star:hover ~ .fa-star::after,
+            .fa-star:hover ~ .fa-regular::after {
+                font-family: "Font Awesome 5 Free";
+                content: "\f005";
+                position: absolute;
+                background-color: $white;
+                font-weight: 400;
+                inset: 0;
+            }
+        }
+    }
+}
